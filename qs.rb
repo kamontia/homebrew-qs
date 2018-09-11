@@ -1,34 +1,16 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                http://www.rubydoc.info/github/Homebrew/brew/master/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
+RELEASE_VERSION='v0.2.0'
 class Qs < Formula
-  desc "Support your fix-up quickly with git command"
+  desc "Support your git operation. Quck Squash!"
   homepage ""
-  url "https://github.com/kamontia/qs/archive/v0.2.0.tar.gz"
-  sha256 "02bd1a68418879b2844cbeae8c7ff96350b561ffe82410cdfc480f1a3205011e"
+  url "https://github.com/kamontia/qs/releases/download/#{RELEASE_VERSION}/qs-mac"
+  sha256 "f2c0309aa74704424be9b9987544bc3e6cba44f16c0452e37d2c57813ac02ee1"
   # depends_on "cmake" => :build
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
-    # system "cmake", ".", *std_cmake_args
-    system "make", "install" # if this fails, try separate make/make install steps
+    bin.install 'qs'
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test qs`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
     system "false"
   end
 end
